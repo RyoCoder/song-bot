@@ -43,7 +43,7 @@ def a(client, message):
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
-    m = message.reply('`Searching... Please Wait...`')
+    m = message.reply('`Đang tìm kiếm ... Vui lòng đợi...`')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = []
@@ -67,14 +67,14 @@ def a(client, message):
             #     m.edit("Exceeded 30mins cap")
             #     return
 
-            performer = f"[@mwkBoTs]" 
+            performer = f"[@SlimeMusic_bot]" 
             thumb_name = f'thumb{message.message_id}.jpg'
             thumb = requests.get(thumbnail, allow_redirects=True)
             open(thumb_name, 'wb').write(thumb.content)
 
         except Exception as e:
             print(e)
-            m.edit('**👎 Nothing found Retry with another !**')
+            m.edit('**👎 Không tìm thấy gì Thử lại với cái khác !**')
             return
     except Exception as e:
         m.edit(
@@ -82,7 +82,7 @@ def a(client, message):
         )
         print(str(e))
         return
-    m.edit("`Bruh... Uploading... Please Wait...`")
+    m.edit("`Bruh ... Đang tải lên ... Vui lòng đợi...`")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
